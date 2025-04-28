@@ -1,0 +1,4343 @@
+/*
+Theme Name: Degikart
+Theme URI: http://yourwebsite.com/degikart
+Author: Niteen Maurya
+Author URI: http://yourwebsite.com
+Description: A premium digital marketplace theme for buying and selling products. Ideal for e-commerce websites with customizable options.
+Version: 1.0
+License: GPL-2.0-or-later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: degikart
+Tested up to: 6.3
+Requires PHP: 7.4
+Tags: e-commerce, custom-background, custom-header, theme-options, translation-ready
+Theme Status: Commercial (License Required)
+*/
+
+
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ 
+
+
+
+
+
+
+
+
+/* Button styles for comment trigger */
+#commentButton {
+    background: none; /* No background */
+    border: 0; /* No border */
+    font-weight: bold; /* Bold text */
+}
+
+ 
+/* Close button styling */
+.close {
+    color: #aaa; /* Gray color */
+    float: right; /* Align to the right */
+    font-size: 28px; /* Font size */
+    font-weight: bold; /* Bold font */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Change color on hover */
+    text-decoration: none; /* No underline */
+    cursor: pointer; /* Pointer cursor */
+}
+ 
+
+
+
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+}
+
+.popup-content {
+    position: absolute; /* Position it absolutely */
+    top: 50%; /* Move down to the middle */
+    left: 50%; /* Move right to the middle */
+    transform: translate(-50%, -50%); /* Offset by half its width and height */
+    background-color: #fff; /* White background */
+    padding: 15px; /* Padding */
+    border: 1px solid #888; /* Border */
+    width: 85%; /* Responsive width */
+    max-width: 800px; /* Reduce max width */
+    height: 70%;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow */
+    overflow: auto; /* Enable scrolling if content exceeds max height */
+}
+
+.comment-popup h3, .comment-popup h4 {
+    margin: 0 0 10px; /* Margin for headings */
+    color: #333; /* Heading color */
+}
+
+
+.comment-popup textarea {
+    width: 100%; /* Full width minus padding */
+    height: 100px; /* Fixed height */
+    margin-bottom: 10px; /* Spacing below */
+    padding: 10px; /* Padding */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 4px; /* Rounded corners */
+    resize: none; /* Disable resizing */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.rating-container {
+    margin-bottom: 10px; /* Spacing below */
+}
+
+.rating-counter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating-container select {
+    padding: 10px; /* Padding */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.comment-popup button {
+    background-color: #007bff; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.comment-popup button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+ 
+.content-comment {
+    list-style: none;
+}
+ /* Style for the comment card container */
+.comment-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Header style for the comment card */
+.comment-card .comment-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+/* Avatar styling */
+.comment-card .comment-header img {
+    border-radius: 50%;
+}
+
+/* Date styling */
+.comment-card .comment-date {
+    font-size: 12px;
+    color: #888;
+    margin-left: auto;
+}
+
+/* Body of the comment */
+.comment-card .comment-body p {
+    font-size: 14px;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Footer with the rating */
+.comment-card .comment-footer {
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Add styles for .wp-caption */
+.wp-caption {
+    max-width: 100%;
+    margin-bottom: 1.5em;
+    text-align: center;
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Add styles for .wp-caption-text */
+.wp-caption-text {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Add styles for .sticky */
+.sticky {
+    border: 2px solid #333;
+    background: #f5f5f5;
+    padding: 10px;
+}
+
+/* Add styles for .gallery-caption */
+.gallery-caption {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Add styles for .bypostauthor */
+.bypostauthor {
+    font-weight: bold;
+}
+
+/* Add styles for .alignright */
+.alignright {
+    float: right;
+    margin-left: 1.5em;
+}
+
+/* Add styles for .alignleft */
+.alignleft {
+    float: left;
+    margin-right: 1.5em;
+}
+
+/* Add styles for .aligncenter */
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.screen-reader-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0); /* Ensures the element is hidden visually */
+    overflow: hidden; /* Ensures the element is hidden visually */
+    clip-path: inset(100%); /* Provides an alternative for older browsers */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+.footer {
+    color: #D3D3D3;
+    background-color: #1C1C1C;
+    padding: 10px 0;
+    margin-top: 0px;
+}
+
+.footer a {
+    color: #D3D3D3;
+}
+
+.footer li {
+   list-style: none;
+}
+
+
+.footer-widgets {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.footer-widget {
+    flex: 1 1 0;
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+
+.footer-widgets.empty {
+    display: none; /* Agar footer widgets empty hain, toh footer ko hide karen */
+}
+
+@media (max-width: 768px) {
+    .footer-widgets {
+        flex-direction: column;
+        margin: 0;
+    }
+}
+
+.footer-copyright {
+    justify-content: space-between;
+    display: flex;
+    font-size: 15px;
+    padding: 10px 15px;
+}
+
+html {
+    scroll-behavior: smooth; /* पूरे पेज के लिए स्मूथ स्क्रॉलिंग */
+}
+  
+#myBtn {
+    font-size: 15px;
+    padding: 0px 15px;
+    color: #000;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+   
+    border-radius: 10px;
+}
+ 
+
+
+
+
+/* Styling for the quantity input */
+.cart-item-quantity {
+    width: 60px; /* Set a specific width */
+    height: 30px; /* Set the height */
+    padding: 5px; /* Add padding for better spacing */
+    font-size: 14px; /* Font size to make the text inside readable */
+    text-align: center; /* Center the number inside the input */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.cart-item-quantity:focus {
+    outline: none; /* Remove the default focus outline */
+    border-color: #007bff; /* Change border color when focused */
+    background-color: #e9f7ff; /* Change background color when focused */
+}
+
+/* Styling for the post card container */
+.cart-item {
+    display: flex;
+    justify-content: space-between; /* Space between elements */
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add slight shadow */
+}
+
+/* Styling for the footer part */
+.post-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; /* Add space between the items */
+}
+
+/* Styling the remove button */
+.remove-item-button {
+    background-color: #ff6347; /* Tomato color */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-item-button:hover {
+    background-color: #ff4500; /* Darker tomato color */
+}
+
+/* Checkbox styling */
+.cart-item-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+
+
+ /* Style for menu items with submenus */
+.mobile-navigation li.has-submenu > a {
+    display: flex;
+    justify-content: space-between; /* Left for text, right for arrow */
+    align-items: center; /* Vertically center the text and arrow */
+    cursor: pointer;
+}
+
+/* Add padding to the arrow */
+.mobile-navigation li.has-submenu > a:after {
+    content: '↓'; /* Default down arrow for submenus */
+    font-size: 14px;
+    margin-left: 10px; /* Space between text and arrow */
+    padding: 5px;
+    display: inline-block;
+    transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+/* Rotate the arrow when submenu is open */
+.mobile-navigation li.open > a:after {
+    transform: rotate(180deg); /* Rotate the arrow when submenu is open */
+}
+
+/* Style for the submenu */
+.mobile-navigation li > ul {
+    display: none; /* Hide submenus by default */
+    padding-left: 20px; /* Indentation for nested submenus */
+}
+
+/* Show submenu when its parent has the 'open' class */
+.mobile-navigation li.open > ul {
+    display: block; /* Show submenu */
+}
+
+/* Style for submenu items */
+.mobile-navigation li ul li {
+    padding: 8px 0; /* Padding for submenu items */
+}
+
+/* Hover effect for submenu items */
+.mobile-navigation li ul li:hover {
+    background-color: #f1f1f1; /* Background color on hover */
+}
+
+/* Make links look clickable (text only) */
+.mobile-navigation li a {
+    text-decoration: none; /* Remove underline from links */
+    color: black; /* Set text color */
+}
+
+/* Hover effect for main menu links */
+.mobile-navigation li a:hover {
+    background-color: #f1f1f1; /* Background color on hover */
+}
+
+/* Make the submenu container styled like a button (but the arrow itself) */
+.mobile-navigation li.has-submenu > a {
+    position: relative; /* So that the arrow can be positioned correctly */
+}
+
+.mobile-navigation li.has-submenu > a:focus, 
+.mobile-navigation li.has-submenu > a:hover {
+    outline: none; /* Prevent focus outline when hovered */
+}
+
+/* Add custom styles for nested submenus (sub-submenus) */
+.mobile-navigation li li.has-submenu > a:after {
+    content: '→'; /* Right arrow for nested submenus */
+    font-size: 12px;
+    margin-left: 10px; /* Space between text and arrow */
+}
+
+
+#mobile-nav > .menu {
+    padding: 10px;
+}
+
+/* Mobile menu styles */
+.mobile-nav {
+    line-height: 50px;
+    position: fixed;
+    left: -100%;
+    top: 0px;
+    width: 300px;
+    height: 100%;
+    bottom: 0;
+    background: #fff;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-x: hidden; 
+    overflow-y: auto;
+ 
+}
+
+.mobile-nav li {
+    list-style: none;
+}
+
+.menu-dddd-container {
+    padding: 10px;
+}
+
+.mobile-nav.open {
+    left: 0;
+}
+
+.mobile-nav button#close-mobile-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#close-mobile-nav svg {
+    cursor: pointer;
+}
+
+#close-mobile-nav   {
+    background-color: #333333;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.mobile-navigation  {
+    padding: 0 10px;
+}
+
+.menu-asas-container > .menu li {
+    padding: 0 10px;
+}
+
+.menu-item:hover {
+    background-color: #f1f1f1;
+}
+
+.menu-uykjiuyk-container {
+    padding: 0 10px;
+}
+
+.mobile-menu {
+margin-right: 0.8rem;
+}
+
+.mobile-menu button {
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-uykjiuyk-container a {
+    color: black;
+}
+
+.header-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.header-icons a {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon img {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 50px;
+}
+
+#full-header {
+    height: 65px;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color:  #333333;
+    border-bottom: 1px solid rgb(218, 228, 230);
+   
+    box-sizing: border-box; /* Ensure padding is included in height */
+}
+
+.site-branding-container  a {
+    Color:  #FFFFFF;
+}
+
+.site-content-area {
+    background-color:  #ffffff;
+}
+
+.site-cont {
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+}
+ 
+@media (min-width: 768px) {
+    .card-container, .site-cont  {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+    }
+}
+
+
+.site-header {
+    display: flex;
+    justify-content: space-between; /* Spread out items */
+    align-items: center; /* Vertically center the content */
+    height: 100%; /* Ensure the header takes the full height of the parent */
+    padding: 0 10px; /* Side padding, optional */
+}
+
+
+.site-branding-container, .inside-header {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 5px;
+    max-width: 100%; /* Responsive */
+    height: auto; /* Maintain aspect ratio */
+    transition: width 0.1s; /* Smooth transition for width changes */
+
+}
+
+.site-branding {
+    order: 10;
+	margin-right: 0;
+    display: inline-block;
+    float: right;
+	clear: right;
+    line-height: 1.2em;
+    word-wrap: break-word;
+    font-weight: 700;
+    text-transform: none; 
+}
+
+
+.site-branding .site-description {
+    text-decoration: none!important;
+ 
+}
+
+.main-title {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.site-description {
+    font-size: 16px;  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+
+.desktop-nav li {
+    text-decoration: none;
+    margin: 0px; 
+}
+
+.desktop-nav a {
+    text-decoration: none; 
+}
+.desktop-navigation {
+    border: 1px solid #f7f7f7;
+    background-color: rgb(255, 255, 255);
+}
+/* By default, hide the desktop-nav for smaller screens */
+.desktop-nav {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .mobile-menu,
+    .mobile-nav {
+        display: none;
+    }
+
+    .desktop-nav { 
+        padding: 0px 10px;
+        display: flex; /* Flexbox layout for the desktop navigation */
+        justify-content: space-between; /* You can adjust this based on how you want the items to align */
+        align-items: center; /* Align items vertically at the center */
+    }
+
+    #desktop-nav {      
+        white-space: nowrap; /* Prevent items from wrapping to the next line */
+        list-style: none; /* Remove default list styling */
+        padding: 0;
+        margin: 0;
+        display: flex; /* Display menu items in a row */
+    }
+
+    #desktop-nav li {
+        padding: 15px 0;
+        list-style: none;
+        margin-right: 20px; /* Space between menu items */
+        position: relative; /* For positioning the sub-menu */
+    }
+
+    #desktop-nav li:last-child {
+        margin-right: 0; /* Remove right margin from the last item */
+    }
+
+    #desktop-nav a {
+        padding: 0 10px;
+        text-decoration: none; /* Remove underline from links */
+        color: #000; /* Change the text color */
+        font-size: 14px; /* Font size for the menu items */
+        display: flex;
+        align-items: center;
+    }
+
+    #desktop-nav a:hover {
+        color: #0073e6; /* Change color on hover */
+    }
+
+    /* Arrow styling (added to sub-menu parent) */
+    #desktop-nav li > a:after {
+        content: '\2193'; /* Downward arrow symbol */
+        margin-left: 5px; /* Space between text and arrow */
+        font-size: 12px; /* Arrow size */
+        display: none; /* Hide the arrow by default */
+        transition: transform 0.3s ease; /* Smooth rotation */
+    }
+
+    /* Display the arrow only if the li contains a sub-menu */
+    #desktop-nav li:has(> ul) > a:after {
+        display: inline-block; /* Show the arrow if the li has a sub-menu */
+    }
+
+    /* Rotate the arrow on hover */
+    #desktop-nav li:hover > a:after {
+        transform: rotate(180deg); /* Rotate the arrow when hovering */
+    }
+
+    /* Sub-menu style */
+    #desktop-nav li > ul {
+        display: none; /* Hide sub-menu by default */
+        position: absolute; /* Position the sub-menu below the parent item */
+        top: 100%; /* Position it directly below the parent menu item */
+        left: 0;
+        background-color: #fff; /* Background color of sub-menu */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for a floating effect */
+        padding: 5px 0;
+        min-width: 200px; /* Minimum width for the sub-menu */
+    }
+
+    /* Display sub-menu on hover */
+    #desktop-nav li:hover > ul {
+        display: block; /* Show sub-menu when hovering over parent item */
+    }
+
+    /* Sub-menu links */
+    #desktop-nav li > ul li {
+        margin: 0;
+    }
+
+    #desktop-nav li > ul li a {
+        padding: 5px 15px;
+        color: #333; /* Text color for sub-menu items */
+        font-size: 14px; /* Font size for sub-menu items */
+        display: block;
+    }
+
+    #desktop-nav li > ul li a:hover {
+        background-color: #f0f0f0; /* Background color on hover */
+        color: #0073e6; /* Change color on hover */
+    }
+}
+
+
+ 
+
+
+
+
+
+#search-card {
+    padding: 30px 20px;
+}
+/* 
+
+/* Default styling for desktop (row layout) */
+.card-wrapper {
+    /* display: flex; */
+    flex-direction: row; /* Default layout: row */
+    width: 100%; /* Set the width of the wrapper */
+}
+
+/* Mobile styling (column layout) */
+@media (max-width: 768px) {
+    .card-wrapper {
+        flex-direction: column; /* Change layout to column for mobile */
+    }
+}
+
+/* Card Header Styles */
+#custom-card {
+    background-color: #f9f9f9; /* Light background for the section */
+    padding: 20px 0; /* Add padding to the top and bottom of the section */
+}
+
+.card-image {
+    display: flex;              /* Use Flexbox for centering the content */
+    justify-content: center;     /* Center horizontally */
+    align-items: center;        /* Center vertically */
+    width: 50%;                  /* Set width to 50% by default */
+    padding: 10px;               /* Add padding for some space around the image */
+}
+
+.card-image img {
+    max-width: 100%; /* Ensures the image never exceeds the container width */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover; /* Ensures the image scales properly without distortion */
+    border-radius: 8px; /* Optional: adds rounded corners */
+}
+
+.card-header {
+ /*   width: 50%;  50% width for card header */
+    text-align: center; /* Center align the content inside the card */
+    padding: 30px 20px; /* Add padding around the content */
+}
+
+.card-header h1 {
+    font-size: 24px; /* Larger font size for the main heading */
+    font-weight: 700; /* Make the heading bold */
+    color: #333; /* Dark color for the heading */
+    margin-bottom: 15px; /* Space below the heading */
+    line-height: 1.4; /* Line height for better spacing */
+    text-transform: capitalize; /* Capitalize the first letter of each word */
+}
+
+.card-header p {
+    font-size: 16px; /* Slightly larger font size for the paragraph */
+    color: #555; /* A softer, darker gray for the subtitle */
+    margin-bottom: 25px; /* Add space below the paragraph */
+    line-height: 1.6; /* Increase line height for readability */
+}
+
+/* Flexbox for search form */
+.card-search {
+    display: flex;                /* Use flexbox to align input and button in a row */
+    align-items: center;          /* Vertically align the search input and button */
+    justify-content: center;      /* Center the search form horizontally */
+    width: 100%;                   /* Make the search form take up 80% of the container */
+    margin: 0px auto;            /* Center the form and add margin above */
+}
+
+/* Styles for the search input field */
+.search-field {
+    font-size: 14px;              /* Slightly larger font size */
+    padding: 15px;                /* Padding inside the input */
+    border: 1px solid #ccc;      /* Light border color */
+    border-radius: 0px;          /* Rounded corners */
+    margin-right: 10px;           /* Space between input and button */
+    flex: 1;                      /* Allow input to grow and take available space */
+}
+
+/* Styles for the submit button */
+.search-submit {
+    padding: 15px 20px;           /* Padding inside the button */
+    background-color: #4CAF50;    /* Green background for the button */
+    color: white;                 /* White text color */
+    border: none;                 /* Remove default border */
+    border-radius: 5px;           /* Rounded corners */
+    cursor: pointer;             /* Change cursor on hover */
+    font-size: 14px;              /* Font size for the button */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the submit button */
+.search-submit:hover {
+    background-color: #45a049;    /* Darker green on hover */
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .card-search {
+        width: 100%; /* Increase width of form to 90% on mobile */
+    }
+
+    .card-image {
+        width: 100%; /* Make the card image take full width on mobile */
+        padding: 0; /* Remove extra padding */
+    }
+
+    .card-header {
+        width: 100%; /* Make the card header take full width */
+    }
+    .card-header h1 {
+        font-size: 20px;
+    }
+    .search-field {
+        font-size: 14px;           /* Adjust font size */
+        padding: 15px;             /* Adjust padding for mobile */
+    }
+
+    .search-submit {
+        font-size: 14px;           /* Keep font size consistent */
+        padding: 15px 20px;        /* Adjust padding for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+ 
+    .search-field {
+        font-size: 12px;           /* Reduce font size further on smaller screens */
+        padding: 15px;              /* Reduce padding for very small screens */
+ 
+    }
+
+    .search-submit {
+        font-size: 12px;           /* Keep button size smaller */
+        padding: 15px 16px;         /* Adjust padding for smaller screens */
+    }
+}
+
+.card-search {
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+ 
+
+.product-content {
+    padding: 10px;
+    display: grid;
+    border: 1px solid #cfc9c9;
+}
+
+ 
+
+
+
+.products-grid {
+    padding: 0px;
+	display: grid;
+	grid-template-columns: repeat(1, minmax(200px, 1fr));
+}
+
+.products-grident-area {
+    background-color: rgb(255, 255, 255);
+	word-wrap: break-word;
+    padding: 10px;
+}
+
+#cont-site {
+   padding: 0 10px;
+    display: grid;
+}
+
+#cont-site article {
+	padding: 10px;
+}
+
+@media (min-width: 768px) {
+	.products-grid {
+		grid-template-columns: repeat(2, minmax(200px, 1fr));
+	}
+}
+
+@media (min-width: 1200px) {
+	.products-grid {
+		grid-template-columns: repeat(3, minmax(200px, 1fr));
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+.guide-instructions {
+    color: grey; font-size: 12px;
+} 
+
+
+
+
+
+/* Form Styles */
+#product-form {
+    line-height: 40px;
+    padding: 5px;
+    border: 0px solid #ddd;
+    background-color: none;
+}
+
+#product-form select,
+#product-form input[type="checkbox"] {
+    padding: 5px 0;
+}
+
+#product-form label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#product-form .monprice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#product-form input[type="checkbox"] {
+    height: 15px;
+    width: 15px;
+}
+
+#product-form .buttontotal {
+    text-align: center;
+    margin-top: 5px;
+}
+
+#product-form .buttontotal button {
+    width: 100%;
+    background:  #3e86d3;
+    color: #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    border: none;
+}
+
+#product-form .buttontotal button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+.sidebar-content {
+    margin-top: 20px;
+    padding: 5px; /* Space inside the box */
+    color: #333; /* Text color */
+}
+
+.sidebar-content p {
+    padding: 0px; /* Padding for better readability */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between labels and values */
+    margin: 5px 0; /* Space between paragraphs */
+}
+
+
+.sidebar-content p strong {
+    display: inline-block; /* Keep strong elements inline */
+    color: #555; /* Slightly darker text color for labels */
+}
+
+.sidebar-content p:nth-child(odd) {
+    justify-content: space-between;
+    padding: 0px; /* Padding for better readability */
+    border-radius: 3px; /* Slightly rounded corners for rows */
+}
+ 
+
+
+
+
+
+ 
+#product-sidebar, .sidebar-content {
+    padding: 10px;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 5px;
+}
+ 
+.product-area, .product-right-sidebar {
+    margin-bottom: 10px;
+    line-height: 35px;
+}
+
+.content-wrapper {
+    padding:  0 10px;
+}
+
+@media (min-width: 768px) {
+    .content-wrapper {
+        display: flex;
+        gap: 20px;
+        row-gap: 20px;
+        width: 100%;
+    }
+    .product-area {
+        flex: 1 1 60%;
+		max-width: 60%;
+		order: 1; /* Content area baad mein dikhane ke liye */
+	
+    }
+    .product-right-sidebar {
+    
+        flex: 1 1 40%;
+		max-width: 40%;
+		order: 2; /* Content area baad mein dikhane ke liye */
+	
+    }
+}
+
+/* Base styles for the form */
+#category-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff; /* White background for better contrast */
+}
+
+#category-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333; /* Dark text color for label */
+}
+
+#category-form select,
+#category-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px; /* Larger text size for readability */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+
+/* Hover effect for the submit button */
+#category-form input[type="submit"]:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+} 
+
+#category-form select:focus,
+#category-form input[type="submit"]:focus {
+    border-color: #4CAF50; /* Green border when focused */
+    outline: none; /* Remove the default outline */
+}
+
+/* Styles for mobile devices */
+@media (max-width: 600px) {
+    #category-form {
+        padding: 10px;
+    }
+
+    #category-form label {
+        font-size: 14px;
+    }
+
+    #category-form select,
+    #category-form input[type="submit"] {
+        padding: 8px;
+    }
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.form-main {
+    background-color: white;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+ 
+
+.label-container {
+    margin-bottom: 5px;
+}
+
+.input-text,
+.input-number,
+.input-date,
+.input-url,
+.input-textarea,
+.input-file {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.input-checkbox {
+    margin-top: 10px;
+}
+
+.input-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.input-submit:hover {
+    background-color: #45a049;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+    .form-group {
+        align-items: center;
+    }
+
+    .label-container {
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    .input-container {
+        flex: 2;
+    }
+}
+
+
+
+
+
+
+.seller-details {
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.seller-details h2 {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.seller-details label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.seller-details input[type="text"],
+.seller-details input[type="email"],
+.seller-details input[type="date"],
+.seller-details select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.seller-details input[type="radio"] {
+    margin-right: 5px;
+}
+
+
+.seller-details button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.seller-details button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+#payment-page {
+    margin: 10px;
+    padding: 10px;
+}
+
+#payment-page h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#selected-items {
+    margin-bottom: 20px;
+    padding: 15px;
+ 
+}
+
+#selected-items div {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.paypal-button-wrapper {
+
+    justify-content: center;
+    align-items: center;
+    margin: 150px auto;
+    max-width: 500px;
+}
+
+.download-link {
+    margin-left: 10px;
+    color: #007bff;
+}
+
+.download-link a {
+    text-decoration: none;
+}
+
+.download-link a:hover {
+    text-decoration: underline;
+}
+
+#paypal-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.alert {
+    color: green;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#profile-page {
+    padding: 20px;
+}
+
+.profile-container {
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.profile-page h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.profile-page label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.profile-page input {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.logout-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+}
+
+.update-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.update-button:hover {
+    background-color: #45a049;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+    #profile-page {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#uploaded-products-page {
+    padding: 0px;
+}
+
+.uploaded-products-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.uploaded-products-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.product-card p {
+    margin: 5px 0;
+}
+
+.upload-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.upload-link:hover {
+    background-color: #45a049;
+}
+
+.products-grid {
+	display: grid;
+	column-gap: 10px;
+	grid-template-columns: repeat(1, minmax(200px, 1fr));
+}
+
+@media (min-width: 768px) {
+	.products-grid {
+		grid-template-columns: repeat(2, minmax(200px, 1fr));
+	}
+}
+
+@media (min-width: 1200px) {
+	.products-grid {
+		grid-template-columns: repeat(3, minmax(200px, 1fr));
+	}
+}
+    
+.rating {
+    font-size: 14px;
+}
+
+.rating-stars {
+    color: gold;
+    
+}
+
+.rating-stars .star {
+    font-size: 16px;
+}
+
+.rating-stars .star.filled {
+    color: gold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ .login-cont {
+    padding: 20px 0px;
+    background-color: #ffffff;
+ }
+
+ .kart-logo {
+    padding: 15px;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+ }
+  
+  .login-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto; /* Centering the container */
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-content {
+    padding: 20px 25px;
+  }
+
+  .kart-logo, .lost-password-link {
+    text-align: center;
+  }
+  
+  .login-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+
+  /* Form Styles */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .form-label {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .form-input {
+    width: 100%;             /* Ensure it takes full container width */
+    padding: 12px;           /* Slightly larger padding for better spacing */
+    border: 1px solid #ccc;  /* Light gray border */
+    border-radius: 4px;      /* Rounded corners */
+    box-sizing: border-box;  /* Include padding and border in the total width */
+    font-size: 16px;         /* Adjust font size if necessary */
+    transition: border-color 0.3s ease; /* Smooth transition for focus effect */
+}
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  /* Create Account Link */
+  .create-account-link {
+    margin-top: 20px;
+    text-align: center; 
+  }
+  
+  .create-account-link a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .create-account-link a:hover {
+    text-decoration: underline;
+  }
+  
+#registration-form {
+    margin-top: 20px;
+ }
+
+#site-width {
+    margin-left: auto;
+	margin-right: auto;
+	max-width: 1300px;
+}
+
+
+
+
+
+
+
+
+
+.sorting-buttons {
+    align-items: center;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid rgb(218, 228, 230);
+
+}
+
+#sort-options {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+.product-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.inside-article {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-body {    
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid rgb(228, 225, 225);
+    background-color: #f7f7f7;  /* Soft, very light gray */
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.live-cart {
+    gap: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sales-preview {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sales-preview .sales {
+    text-align: left;
+}
+
+.sales-preview .live-preview {
+    text-align: right;
+}
+ 
+.live-cart button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.rating-header {
+    align-items: center;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating-header p { 
+    font-size: 17px;
+}
+
+.rating-details {
+    column-gap: 20px;
+ 
+    align-items: center;
+ display: flex;
+}
+
+.average-rating {
+    font-size: 24px; /* Change the font size as needed */
+    color: #FFCC00; /* Optional: Change color for better visibility */
+
+}
+
+.rating-breakdown {
+    justify-content: space-between;
+    width: 100%; /* Ensures full container width */
+    gap: 20px; /* Adds space between the `rating-info` and `rating-details` */
+}
+
+.rating-info {
+    width: 90px; /* Fixed width for info */
+    text-align: center; /* Centers the text inside */
+    justify-content: center;
+    align-items: center; /* Vertically center the content */
+}
+ 
+.post-preshot {
+    display: flex;
+    justify-content :center;
+    gap: 20px;
+    margin: 10px 0;
+}
+
+.post-preshot p {
+    padding: 0px 15px;
+    border-radius: 5px;
+    background-color: #0084B4;
+}
+
+.post-preshot a {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.item-content {
+    margin-top: 20px;
+    word-wrap: break-word;
+}
+.item-content p {
+font-size: 16px;
+line-height: 1.6em;
+}
+
+.views-sales {
+    padding: 10px; 
+    gap: 20px;
+}
+
+.views-sales {
+    margin: 20px 0;
+    border: 1px solid rgb(218, 218, 218);
+}
+
+
+
+#rateProductButton  {
+    font-size: 14px;
+    background-color: rgb(241, 237, 237) ;
+    padding: 10px;
+    border: 0;
+}
+
+
+
+
+
+
+/* Navigation Styles */
+.post-navigation {
+    display: flex;
+    justify-content: space-between;
+   
+    gap: 10px;
+    margin: 20px 0;
+    font-size: 16px;
+    background-color: white;
+}
+
+.nav-previous, .nav-next {
+    flex: 1;
+}
+
+.nav-previous a, .nav-next a {
+    display: block;
+    padding: 10px;
+  
+    color: #000000;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+
+ .post-site-main {
+    background-color: rgb(255, 255, 255);
+    padding:  0px;
+ }
+
+.products-grident {
+    padding: 10px 0;
+}
+
+.main-content {
+   padding: 10px;
+   flex: 1;
+   background-color: rgb(255, 255, 255);
+   margin-bottom: 0px;
+} 
+
+
+.entry-title {
+    font-size: 25px;
+    margin: 0 0 10px;
+}
+
+
+.post-categories li, .middle-right-bottom li {
+    list-style: none;
+}
+
+.post-image  {
+ text-align: center;
+}
+
+.post-image img {
+    max-width: 1200px; /* Maximum width of 1200px */
+    width: 100%;       /* Makes the image responsive */
+    height: auto;      /* Maintains aspect ratio */
+   
+}
+
+
+/* Sidebar Styles */
+.sidebar-section section {    padding: 10px;
+margin-bottom: 10px;    background-color: white;
+}
+
+/* Comments Section */
+.comments-area {
+    margin-top: 40px;
+}
+
+.comments-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.comment-author {
+    font-weight: bold;
+}
+
+.comment-meta {
+    font-size: 0.9em;
+    color: #666;
+
+}
+ 
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .site-content {
+        display: flex; 
+        gap: 10px;
+    }
+
+    .sidebar-section {
+        flex: 1 1 30%;
+        max-width: 30%;
+    }
+
+    .main-content {
+        flex: 1 1 70%;
+        max-width: 70%;
+    }
+}
+
+.entry-header img {
+    max-width: 100%; /* Ensure the image is responsive and scales with the container */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 8px; /* Optional: rounded corners for the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    margin-bottom: 15px; /* Space between image and title */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.error-404 {
+    background-color: white;
+    text-align: center;
+    padding: 10%;
+}
+
+.error-404 p {
+    margin: 10px 0;
+}
+
+.search-form {
+    margin-top: 20px;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center the content */
+}
+
+.search-field {
+    width: 70%;
+    padding: 10px;
+}
+
+.search-submit {
+    padding: 10px 15px;
+    background-color: #0073aa; /* Change color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer on hover */
+}
+
+.search-submit:hover {
+    background-color: #005177; /* Darker on hover */
+}
+
+
+
+
+
+body {
+    background-color: rgb(248, 246, 246);
+    font-family:'Segoe UI', Tasales-barhoma, Verdana, sans-serif;
+}
+
+ 
+
+.post-header {
+    background-color: #f7f7f7;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.entry-header {
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.product-card h2, .entry-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;            /* Prevent wrapping */
+    overflow: hidden;               /* Hide overflow text */
+    text-overflow: ellipsis;        /* Add ellipsis when the text overflows */
+    max-width: 100%;                /* Ensure it doesn’t break the grid */
+    display: block;                 /* Make sure it behaves like a block element */
+    word-wrap: break-word;          /* Allow word breaks if needed */
+}
+
+
+.main-entry-title {
+    margin-bottom: 10px;
+}
+
+.entry-content {
+    padding: 0px;
+}
+
+.main-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sales strong {
+    font-size: 14px;
+    font-weight: normal;
+
+}
+
+.live-preview a {
+    color: rgb(76, 0, 255);
+    border-radius: 2px;
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+
+.live-preview a:hover {
+    background-color: #ffe600;
+}
+
+
+
+
+
+
+.cart-btn {
+    border-radius: 2px;
+    border: 1px solid black;
+
+
+}
+
+
+
+
+
+
+.page-title {
+    padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pagination {
+    text-align: center;
+    background-color:white;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    flex-wrap: wrap;
+}
+
+.pagination a,
+.pagination span {
+    font-size: 14px;
+    color: #0073aa;
+    padding: 5px 10px;
+    margin: 5px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover,
+.pagination span.current {
+    background-color: #0073aa;
+    color: #fff;
+    border-color: #0073aa;
+}
+
+.pagination span.dots {
+    background-color: transparent;
+    border: none;
+    color: #333;
+}
+
+.pagination .prev,
+.pagination .next {
+    font-weight: bold;
+}
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.entry-meta {
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+}
+
+.entry-meta .url {
+    display: flex;
+    align-items: center;
+    margin-right: 5px; /* Adjust as needed */
+}
+
+.entry-meta .author.vcard {
+    display: flex;
+    align-items: center;
+}
+
+.entry-meta .author.vcard img {
+    margin-right: 0px; /* Adjust as needed */
+width: 15px;
+height: 15px;
+border-radius: 50px; 
+}
+ 
+.entry-meta .author.vcard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.entry-meta .author.vcard img {
+    margin-right: 5px; /* Adjust as needed */
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+/* Popup Notification CSS */
+.popup-notification {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 350px;
+    z-index: 1000;
+    display: none; /* Initially hidden */
+}
+
+#popup-license {
+    padding: 5px;
+}
+.notice {
+    color: white;
+    text-align:center;
+    font-weight:500;
+    padding: 10px;
+    margin-top:0;
+    background-color: rgb(218, 77, 77);
+}
+
+.popup-price {
+    gap:0.5rem;
+    display:flex;
+    text-align: center;
+    align-items:center;
+}
+
+.popup-price b {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d9534f; /* Highlight color */
+}
+
+.popup-notification p { 
+    margin-bottom: 10px;
+}
+
+.popup-notification strong {
+    font-weight: bold;
+}
+
+.popup-notification select,
+.popup-notification input[type="checkbox"] {
+    margin-left: 10px;
+}
+ 
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.popup-buttons .left-button {
+    background-color: #5bc0de;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.popup-buttons .left-button:hover {
+    background-color: #31b0d5;
+}
+
+.popup-buttons .right-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.popup-buttons .right-button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+  
+#full-desknav {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgb(218, 228, 230);  
+}
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+        position: relative; 
+       
+    }
+    /* Hide navigation menu on mobile devices */
+    @media (max-width: 768px) {
+        .nav-container {
+            display: none;
+        }
+    }
+    
+    .nav-wrapper {
+        overflow: hidden;
+        flex: 1;
+    }
+    
+
+    .nav-button {
+        margin: 0 10px;
+        background-color: #ddd;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+    
+    .left-button {
+        left: 0;
+    }
+    
+    .right-button {
+        right: 0;
+    }
+    
+
+
+
+.spacror {
+    margin: 30px 0;
+    border-bottom: 1px solid rgb(180, 172, 172);
+}
+
+
+
+
+
+
+
+    .header-icons {
+        position: relative;
+    }
+    
+    .cart-item-count {
+      position: relative;
+        top: -5px; /* Move up */
+        left: 12px; /* Adjust horizontal position */
+        background: #FF0000; /* Background color */
+        color: #FFFFFF; /* Text color */
+        border-radius: 50%;
+        padding: 2px; /* Padding for the count */
+        font-size: 10px; /* Font size */
+        width: 15px;    
+        height: 15px;
+        text-align: center;
+ 
+    }
+    
+    /* Example media query for responsive design */
+    @media (max-width: 600px) {
+        .cart-item-count {
+            font-size: 10px; /* Adjust font size */
+            padding: 2px /* Adjust padding */
+        }
+    }
+ 
+.comment {
+    list-style: none;
+   
+}
+
+.comment-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-body {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.comment-body img {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.children {
+    margin-left: 20px;
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
+    padding-left: 10px;
+}
+
+.comment-form {
+    margin-top: 20px;
+}
+
+.comment-form p {
+    margin-bottom: 15px;
+}
+
+.comment-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.comment-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comment-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
+
+
+
+.item-content li  {
+	margin-bottom: 0;
+	margin-left: 1.5em;
+}
+
+
+ 
+    .author-products {
+        margin: 10px;
+    }
+
+
+    .author-products h2 {
+        margin-bottom: 20px;
+    }
+    
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        background-color: #fff;
+      
+    }
+    
+    .product-card:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;  /* Ensures the image covers the container area, potentially cropping the image */
+        border-radius: 5px;
+    }
+    
+    .product-card h2 {
+        font-size: 1.2em;
+        margin: 10px 0;
+    }
+    
+    .product-card p {
+        margin: 5px 0;
+        color: #555;
+    }
+
+ 
+button#show-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0073aa;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: auto;
+    margin-right: auto;
+    display: block; /* Ensures the button is a block-level element to allow centering */
+}
+
+    button#show-more:hover {
+        background-color: #005177; /* Darker blue */
+    }
+    @media (min-width: 768px) {
+        .total-info {
+ 
+ display: flex;
+ justify-content: space-between; /* Align total info and social links */
+ align-items: center; /* Center items vertically */
+
+}
+
+ }
+
+    .total-ratings {
+ 
+        padding:10px;
+        margin: 10px 0 ; /* Reset margin for better alignment */
+    }
+ 
+    
+    .overall-rating {
+    display: flex;
+    align-items: center; /* Center text vertically */
+}
+
+.rating-stars {
+    margin-right: 10px; /* Space between text and stars */
+}
+
+.star {
+    color: #ccc; /* Default star color */
+    font-size: 1.5em; /* Adjust size as needed */
+}
+
+.star.yellow {
+    color: #ffd700; /* Yellow color for filled stars */
+}
+
+.sales-count {
+    font-weight: bold; /* Make the sales count bold */
+    color: #333; /* Dark color for sales */
+}
+
+.overall-rating, .total-sales,   .rating-stars span {
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+.content-text {
+    max-height: 100px; /* Mobile size (5 lines content) */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.3s ease-out; /* Smooth transition */
+}
+
+.btn-container {
+    display: flex; /* Enable Flexbox */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px; /* Optional: for rounded corners */
+    background: linear-gradient(to bottom, transparent, #fff); /* Gradient from transparent to white */
+}
+
+.show-more {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px; /* Optional: to make the button rounded */
+}
+
+.show-more:focus {
+    outline: none;
+}
+
+@media (min-width: 769px) {
+    .content-text {
+        overflow: visible;
+        max-height: none; /* Desktop: content shown fully */
+    }
+
+    .show-more {
+        display: none; /* Hide "Show More" button on desktop */
+    }
+}
+
+
+
+
+
+
+
+
+/* Video Thumbnail (Before click) */
+.video-thumbnail {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Ensure the thumbnail takes full width */
+    max-width: 1280px; /* Max size for the thumbnail */
+}
+
+.video-thumbnail img {
+    width: 100%;  /* Ensure image fills the parent container */
+    height: auto;  /* Maintain aspect ratio */
+    display: block; /* Ensure no space below the image */
+}
+
+.video-thumbnail .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 50px;
+}
+
+/* Video Placeholder (After thumbnail click) */
+.video-placeholder {
+    height: 295px; 
+    position: relative;
+    display: none;  /* Initially hidden */
+    width: 100%;    /* Ensures the video takes the same space as the thumbnail */
+    max-width: 1280px;  /* Max size for the video */
+}
+.site-content-area.video-placeholder iframe {
+    width: 100%;  /* Video takes up full width */
+    height: 100%; /* Maintain the aspect ratio */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.post-category {
+    gap: 10px; 
+    padding: 10px;
+}
+
+/* Mobile Layout (default) */
+.post-category {
+    display: flex;
+	display: grid;
+	column-gap: 10px;
+	grid-template-columns: repeat(1, minmax(200px, 1fr));
+}
+
+/* Tablet Layout */
+@media (min-width: 768px) {
+    .post-category {
+		grid-template-columns: repeat(2, minmax(200px, 1fr));
+	}
+}
+
+/* Desktop Layout */
+@media (min-width: 1200px) {
+    .post-category {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+	}
+}
+
+.card-container {
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.product-content {
+    margin-bottom: 0px;
+}
+
+/* Individual Card Styling */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0px;
+    transition: transform 0.3s ease;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+ 
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 1rem;    
+ 
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .card-content p {
+
+        text-align: center;
+
+    }
+        .card-content h3 {
+
+            text-align: center;
+
+        }
+        .card-buttons {
+            text-align: center;
+         
+        }
+ 
+}
+
+.card-content .btn {
+    margin: 0 5px;
+    color: #3013ed;
+}
+
+@media (max-width: 768px) {
+.card-buttons {
+    text-align: center;
+    display: flex;   
+
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;   
+    width: 100%; /* Ensure it takes full width of the parent container */
+}}
+
+
+
+.card-buttons a {
+    font-size: 12px;
+    font-style : italic;
+}
+
+.card-buttons a:hover {
+    color: #ffffff;    
+    padding: 2px 6px;
+}
+.card-content .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Mobile Layout (default) */
+.card-container {
+    display: flex;
+	display: grid;
+	column-gap: 20px;
+	grid-template-columns: repeat(1, minmax(200px, 1fr));
+}
+
+/* Tablet Layout */
+@media (min-width: 768px) {
+    .card-container {
+		grid-template-columns: repeat(2, minmax(200px, 1fr));
+	}
+}
+
+/* Desktop Layout */
+@media (min-width: 1200px) {
+    .card-container {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+	}
+}
+
+.item-new-products, .item-bestsales {
+    margin: 0;
+}
+
+.item-new-products {
+    margin:  0 10px;
+}
+.title-des {
+    padding: 20px;
+}
+.weekly-best-sales-title, .weekly-new-items-title, .weekly-best-courses-title {
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+/* Description with Ellipsis */
+.best-sales-description, .new-items-description, .best-courses-description {
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Load More Link Container */
+.load-more-container {
+    padding: 20px 0;
+    text-align: center; /* Centers the link */
+}
+
+/* Best Sales Load More Link Styling */
+.bestsales-load {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none; /* Removes underline */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.bestsales-load:hover {
+    background-color: #0056b3;
+}
+
+/* Mobile, Tablet, and Desktop Responsiveness */
+@media (max-width: 767px) {
+    .bestsales-load {
+        font-size: 1rem; /* Adjust font size on mobile */
+    }
+}
+
+@media (min-width: 768px) {
+    .bestsales-load {
+        font-size: 1.1rem; /* Slightly larger text on tablets and desktops */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Archive Title */
+.archive-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+    padding-top: 30px;
+}
+
+/* Archive Posts Container */
+.archive-posts {
+    display: grid;
+    grid-template-columns: 1fr; /* Default: 1 column (for mobile) */
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+/* Individual Post */
+.archive-post {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    padding: 10px;
+    border-radius: 3px;
+   
+}
+
+/* Featured Image */
+.post-image {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.post-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+ 
+}
+
+/* Post Title */
+.post-title {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.post-title a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+
+/* Meta Information (Date and Author) */
+.post-meta {
+    font-size: 1em;
+    color: #777;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.post-meta .post-date,
+.post-meta .post-author {
+    color: #999;
+    font-size: 0.9em;
+}
+
+.post-meta .post-author a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+.post-meta .post-author a:hover {
+    text-decoration: underline;
+}
+
+/* Post Excerpt */
+.post-excerpt {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Read More Button */
+.read-more-btn {
+    background-color: #0073e6;
+    color: #fff;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Pagination */
+
+.pagination .page-numbers {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0 5px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    color: #333;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+.pagination .page-numbers.current {
+    background-color: #0073e6;
+    color: white;
+}
+
+/* Mobile Responsiveness - Single Column */
+@media screen and (max-width: 768px) {
+    .archive-title {
+        font-size: 2em;
+    }
+
+    .archive-posts {
+        grid-template-columns: 1fr; /* 1 column layout on mobile */
+    }
+
+    .post-title {
+        font-size: 1.6em;
+    }
+
+    .post-meta {
+        font-size: 0.9em;
+    }
+
+    .read-more-btn {
+        padding: 10px 15px;
+    }
+}
+
+/* Tablet/Smaller Desktop - 2 Columns Layout */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .archive-posts {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns layout on tablets */
+    }
+
+    .post-title {
+        font-size: 1.8em;
+    }
+
+    .post-meta {
+        font-size: 1em;
+    }
+}
+
+/* Larger Desktop - 3 Columns Layout */
+@media screen and (min-width: 1025px) {
+    .archive-posts {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns layout on large screens */
+    }
+
+    .post-title {
+        font-size: 2em;
+    }
+
+    .post-meta {
+        font-size: 1.1em;
+    }
+}
+
+/* Container for the Read More button */
+.read-btn {
+    text-align: right;  /* Align the button to the right */
+    margin-top: 20px;    /* Adds some space above the button */
+}
+
+/* Read More Button Style */
+.read-more-btn {
+    background-color: #0073e6;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.read-more-btn:hover {
+    background-color: #005bb5;
+    transform: translateY(-2px);
+}
+
+.read-more-btn:active {
+    transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Single Post All CSS */
+.single-title {
+    margin-bottom: 10px
+}
+ 
+
+
+/* Style the h2 element inside .author-products */
+.author-products .author-h2 {
+    display: flex;
+    align-items: center;
+    font-family:  'Noto Sans', sans-serif    ;
+    font-size: 1.2rem; /* Adjust heading font size */
+    font-weight: 400; /* Make the title bold (or adjust to your preference) */
+    margin: 0 0 25px; /* Add margin below the title */
+    position: relative; /* Allow positioning of the border */
+}
+
+/* Add border effect using ::after */
+.author-products .author-h2::after {
+    content: ''; /* Empty content for the pseudo-element */
+    width: 10%; /* The border should span the full width of the h2 element */
+    border-bottom: 1px solid var(--border-color, #0a0a0a); /* Set border color with fallback */
+    opacity: 0.5; /* Make the border slightly transparent */
+    margin: 0px 10px 0;
+}
+
+/* Box-sizing reset */
+*, ::after, ::before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+
+
+/* Parent container */
+.rating-container {
+    width: 100%;                /* Ensure the parent container takes full width */
+    display: flex;
+    flex-direction: column;     /* Stack items vertically (or row based on your layout) */
+}
+
+/* Rating Item Container */
+.rating-item {
+    display: flex;              /* Align child elements in a row */
+    align-items: center;        /* Vertically center the items */
+    gap: 10px;                  /* Adds space between the elements */
+    width: 100%;                /* Ensure .rating-item takes full width */
+    box-sizing: border-box;     /* Ensures padding and borders are inside the width */
+}
+
+/* Child Elements inside rating-item */
+.rating-item p {
+    margin: 0;
+    font-size: 14px;
+    flex: 0 1 auto;             /* Default behavior: do not grow, but can shrink */
+}
+
+/* If you want the progress bar to take more space, you can apply flex here */
+.progress-bar {
+    width: 100%;                /* Ensure the progress bar takes full width */
+    height: 10px;
+    background-color: #e0e0e0;  /* Light gray background */
+    border-radius: 5px;
+    flex: 1;                    /* Allow it to grow to fill available space */
+}
+
+/* The progress bar itself */
+.progress {
+    height: 100%;               /* Full height of the progress bar */
+    background-color: #4caf50;  /* Green for the filled part */
+    border-radius: 5px;         /* Rounded corners */
+}
+
+/* Paragraph Styling */
+.rating-breakdown p {
+    font-size: 16px;
+}
+
+.rating-breakdown p strong {
+    font-weight: bold;
+}
+
+/* Box sizing */
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+ 
+.gverfa-menu-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(79, 79, 79);
+  color: white;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.gverfa-sign-out-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: white;
+}
+
+.gverfa-sign-out-text {
+  flex-grow: 1;
+}
+
+.gverfa-sign-out-icon {
+  flex-shrink: 0;
+}
+
+.gverfa-menu-container {
+  position: relative;
+  display: flex;
+  justify-content: center;  /* This centers horizontally */
+  align-items: center;      /* This centers vertically */
+}
+
+.gverfa-dots-icon {
+  cursor: pointer;
+}
+
+
+.gverfa-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  padding: 5px 5px;
+  border-radius: 8px;
+  z-index: 100;
+}
+
+.gverfa-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gverfa-menu ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.gverfa-menu ul li:hover {
+  background-color: #f1f1f1;
+}
+
+ 
+ 
+
+
+.success-message {
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin: 100px 50px; /* Added margin to create space above and below the message */
+    padding: 20px; /* Optional: Add padding to make it stand out more */
+    border-radius: 8px; /* Optional: Rounded corners for aesthetic appeal */
+}
+
+
+    .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .author-application-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus {
+        border-color: #4CAF50;
+        outline: none;
+    }
+
+    .apply-author-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 24px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .apply-author-button:hover {
+        background-color: #45a049;
+    }
+
+    .checkbox-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .checkbox-list li {
+        margin: 8px 0;
+    }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+/* Basic Styling for the Download History Page */
+
+.dwnld-hst {
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 1000px;
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+    border-radius: 8px;
+}
+
+.dwnld-hst__btn {
+    padding: 10px 0;
+    margin: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.dwnld-hst__title {
+    text-align: center;
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.dwnld-hst__desc {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tbl-container {
+    overflow-x: auto;
+}
+
+.dwnld-hst__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dwnld-hst__table th, .dwnld-hst__table td {
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.dwnld-hst__table th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+.dwnld-hst__table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.dwnld-hst__table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Styling for the Product IDs list */
+.dwnld-hst__prod-ids {
+    padding-left: 20px;
+    list-style-type: none;
+    margin: 0;
+}
+
+.dwnld-hst__prod-ids li {
+    margin-bottom: 5px;
+    color: #444;
+    font-size: 14px;
+}
+
+/* Styling for the download link */
+.dwnld-hst__file-url {
+
+}
+
+.dwnld-hst__download-link {
+    text-decoration: none;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.dwnld-hst__download-link:hover {
+    text-decoration: underline;
+}
+
+.dwnld-hst__no-file {
+    color: #e74c3c;
+    font-style: italic;
+}
+
+/* Hover effect for rows */
+.dwnld-hst__row {
+    transition: background-color 0.3s ease;
+}
+
+.dwnld-hst__row:hover {
+    background-color: #fafafa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dwnld-hst {
+        padding: 15px;
+    }
+
+    .dwnld-hst__table th, .dwnld-hst__table td {
+        padding: 10px;
+    }
+
+    .dwnld-hst__prod-ids ul {
+        padding-left: 15px;
+    }
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+.edit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+#seller-page {
+    background-color: #f9f9f9;
+    padding: 10px 0;
+}
+
+#sales-info {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#product-sales-list {
+    margin-top: 20px;
+}
+/* Add a scrollable area for the table */
+.sales-table-wrapper {
+    max-height: 400px; /* Set maximum height of the table wrapper */
+    overflow-y: auto;  /* Add vertical scroll */
+    margin-bottom: 20px; /* Add space below the table */
+}
+
+.sales-table {
+    width: 100%; /* Make sure table takes the full width of the container */
+    border-collapse: collapse; /* Ensures that borders are collapsed */
+}
+
+.sales-table th, .sales-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd; /* Table cell borders */
+}
+
+.sales-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.sales-table td {
+    background-color: #fff;
+}
+ 
+  /* Center the link below the table */
+  .commission-info-link {
+        text-align: center; /* Center the text */
+        margin-top: 20px;  /* Add some space above the link */
+    }
+
+    .commission-info-link a {
+        color: #007bff; /* Blue color for the link */
+        font-size: 16px; /* Set the font size */
+        text-decoration: none; /* Remove underline */
+        font-weight: bold; /* Make the link bold */
+    }
+
+    .commission-info-link a:hover {
+        text-decoration: underline; /* Underline the link on hover */
+    }
+
+
+  
+    .payment-details {
+        margin: 10px auto; /* Center the container */
+        padding: 10px; /* Add some padding around the content */
+        background-color: #f9f9f9; /* Light background for better contrast */
+    }
+    
+    .payment-details h2 {
+        padding: 0 10px;
+    }
+    
+    .payment-details-title {
+        color: #333;
+        margin: 20px 0; /* Adjust margin */
+        font-size: 24px; /* Larger font for title */
+        text-align: center; /* Center the title */
+    }
+    
+    .payment-details-list {
+        list-style-type: none; /* Remove bullet points */
+        padding: 0;
+        background: white;
+        margin: 20px 0; /* Margin above and below the list */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .payment-details-list li {
+        display: flex;
+        justify-content: space-between; /* Space between label and detail */
+        align-items: center; /* Center vertically */
+        margin: 10px 0;
+        padding: 10px 15px; /* Increased padding for comfort */
+        border-bottom: 1px solid #e0e0e0; /* Light border for separation */
+    }
+    
+    .payment-details-list li:last-child {
+        border-bottom: none; /* Remove border for last item */
+    }
+    
+    .payment-details-list strong {
+        color: #4CAF50; /* Highlight strong text */
+    }
+    
+    .edit-button {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        text-align: center; /* Center the button text */
+    }
+    
+    .edit-button:hover {
+        background-color: #45a049; /* Darker shade on hover */
+    }
+    
+    /* Responsive design */
+    @media (max-width: 600px) {
+ 
+    
+        .payment-details-list {
+            margin: 0; /* Remove margin for small screens */
+        }
+    
+        .payment-details-list li {
+            flex-direction: column; /* Stack label and detail */
+            align-items: flex-start; /* Align items to the left */
+        }
+    
+        .edit-button {
+            width: 100%; /* Full width button on small screens */
+        }
+    }
+    
+
+ 
+    /* Main container */
+    .fhgbta-gr-dashboard-container {
+        display: block; /* Change from flex to block to stack sidebar and content */
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+    
+    .main-dash {
+        height: 600px;  
+        padding: 10px;
+    }
+
+    .fhgbta-gr-dashboard-tabs {
+        gap: 15px;
+    }
+
+    .fhgbta-gr-sidebar {
+        margin: 0 10px;
+        display: flex;
+        justify-content: flex-start;
+        padding: 0px 0px;
+        max-height: 100px;  /* Set the height limit for the sidebar */
+        overflow-y: hidden; /* Hide vertical overflow */
+    }
+
+    .fhgbta-gr-dashboard-tabs {
+        display: flex;         /* Flexbox layout to align items in a row */
+        flex-wrap: nowrap;      /* Ensure items don't wrap to the next line */
+        list-style: none;       /* Remove list bullet points */
+        margin: 0;
+        padding: 0;
+        overflow-x: scroll;     /* Allow horizontal scrolling */
+        white-space: nowrap;    /* Prevent text from wrapping inside each list item */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+    }
+
+    .fhgbta-gr-dashboard-tabs::-webkit-scrollbar {
+        height: 0px;  /* Hide the scrollbar */
+    }
+
+    .fhgbta-gr-dashboard-tabs a {
+        display: block;
+        padding: 8px 10px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        border: 1px solid #d7d2d2;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+
+    .fhgbta-gr-dashboard-tabs a.active {
+        background-color: #0073e6;
+        color: white;
+    }
+
+    .fhgbta-gr-sidebar:hover .fhgbta-gr-dashboard-tabs {
+        overflow-x: auto;      /* Show scrollbar when hovering over the sidebar */
+    }
+
+    .fhgbta-gr-sidebar:hover .fhgbta-gr-dashboard-tabs::-webkit-scrollbar {
+        height: 8px;           /* Show the scrollbar when hovered, with small height */
+    }
+
+    .fhgbta-gr-sidebar:hover .fhgbta-gr-dashboard-tabs::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        border-radius: 10px;
+    }
+
+    /* Main content styling */
+    .fhgbta-gr-content {
+        padding: 0px;
+        background-color: #fff;
+    }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+.total-price {
+    
+  margin-left: 5px;
+        text-align: right;
+        align-items: center;
+        justify-content: space-between;
+        display:flex;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .total-price p { 
+        display: flex;
+    }
+
+    .button-container {
+        text-align: right;
+        margin-top: 20px;
+    }
+
+    .header-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .header-title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    .cart-items-container { 
+        margin-bottom:20px;
+    }
+        .cart-container {
+            margin: 10px;
+        }
+ 
+    .buy-now-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .buy-now-button:hover {
+        background-color: #45a049;
+    }
+    
+    /* Basic styling for the cart container */
+#cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Styling for each cart item */
+.cart-item {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 20px;
+    border: 1px solid rgb(228, 225, 225);
+    transition: all 0.1s ease;
+}
+
+/* Hover effect for the card */
+#all-price:hover, .cart-item:hover {
+    transform: translateY(-2px);
+ 
+}
+
+#all-price {
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    padding: 10px;   
+    border: 1px solid rgb(228, 225, 225);
+    background-color: #ffffff;
+}
+
+
+/* Header of the card */
+.post-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    width: 100%;
+}
+
+/* Body of the card */
+.post-card-body {
+    margin-top: 10px;
+    color: #555;
+}
+
+.post-card-body p {
+    margin: 5px 0;
+}
+
+/* Footer section */
+.post-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.remove-item-button {
+    padding: 8px 15px;
+    background-color: #e60000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-item-button:hover {
+    background-color: #cc0000;
+}
+
+
+.cart-item-checkbox {
+    margin-left: 10px;
+    width: 20px; /* Adjust to desired width */
+    height: 20px; /* Adjust to desired height */
+}
+
+
+.item-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007BFF;
+    text-align: right;
+    margin-left: 10px;
+}
+
+
+.buy-now-message {
+    font-size: 14px;
+    color: red;
+display: none;
+text-align: center;
+    margin-top: 10px;
+}
+
+
+ 
+/* Desktop View Styling: Align the total price and button to the right */
+@media (min-width: 768px) {
+    .cart-page {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .cart-items-container {
+        margin-bottom: 10px;
+        flex: 1 1 70%;
+		max-width: 70%;
+		order: 1; /* Content area baad mein dikhane ke liye */
+    }
+
+    .total-price-container {
+ 
+        flex: 1 1 30%;
+		max-width: 30%;
+		order: 2; /* Sidebar pehle dikhane ke liye */
+       
+    
+        /* align-items: flex-end; */
+    }
+    .total-price { 
+   
+        padding: 10px;
+        text-align: center;       
+        position: sticky;
+        justify-items: center;   
+        margin: 0;
+        display: block;
+ 
+       
+    }
+
+    .total-price  p { 
+        display: block;
+    }
+    .buy-now-button {
+        margin-top: 20px;
+    }
+
+ 
+}
+
+.empty-cart-message {
+    font-size: 18px;
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
+
+
+
+.table-style {
+    width: 100%;
+    border-collapse: collapse; /* Ensures the table borders collapse into a single border */
+    border: 2px solid #ccc; /* Adds a rounded border around the table */
+    border-radius: 10px; /* Rounds the corners of the table */
+    overflow: hidden; /* Ensures the rounded corners are applied correctly */
+}
+
+.table-style th, .table-style td {
+    width: 50%;
+    font-size: 14px;
+    vertical-align: top;
+    padding: 5px 10px; /* Adds space inside the cells */
+    border: none; /* Removes the outer borders of individual cells */
+    text-align: left; /* Aligns text to the left by default */
+}
+
+.table-style th {
+    background-color: #f8f7f7; /* Light gray background for headers */
+    font-weight: bold; /* Makes the header text bold */
+}
+
+.table-style td.rtl {
+
+    direction: rtl; /* Makes the content inside the <td> flow from right to left */
+    text-align: left; /* Aligns text to the right for RTL content */
+}
+
+.table-style tr {
+    border-bottom: 1px solid #ddd; /* Adds borders between rows */
+}
+
+
+
+
+
+
+
+
+
+
+
+.post-dates {
+    display: flex;
+    background-color: #e5f4fd;
+    justify-content: center;
+    align-items: center;
+    color: #6c757d;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.post-created, .post-updated {
+    font-size: 12px;
+   
+}
+
+ 
+
+
+
+
+
+
+/* Breadcrumb container styling */
+.breadcrumbs {
+    font-size: 12px;                /* Set font size */
+    color: #333;                    /* Set text color */
+    white-space: nowrap;            /* Prevent line wrapping, keep everything on one line */
+    overflow: hidden;               /* Ensure the content doesn't overflow */
+    text-overflow: ellipsis;        /* Optional: Add ellipsis if content overflows */
+    margin: 10px 0;                 /* Add space around the breadcrumbs */
+}
+
+/* Styling for each breadcrumb link */
+.breadcrumbs a {
+    text-decoration: none;          /* Remove underline */
+    color: #0073e6;                 /* Set color of links */
+    margin: 0px;                  /* Add space between each link */
+    padding: 2px 5px;               /* Optional: Add some padding around the link */
+    transition: color 0.3s ease;    /* Smooth color transition on hover */
+}
+
+.breadcrumbs a:hover {
+    color: #005bb5;                 /* Darker blue when hovered */
+}
+
+/* Separator styling (e.g., ">" symbol) */
+.breadcrumbs > span {
+    color: #666;                    /* Set separator color */
+    margin: 0 5px;                  /* Space between items and separator */
+}
+
+/* Optional: Add custom styles for the last breadcrumb */
+.breadcrumbs > a:last-child {
+    font-weight: bold;              /* Bold the last breadcrumb */
+    color: #000;                    /* Darker color for the last breadcrumb */
+}

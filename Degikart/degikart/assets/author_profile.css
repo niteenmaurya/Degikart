@@ -1,0 +1,142 @@
+
+
+.profile-link {
+    font-size: 14px; /* Adjust the font size */
+    font-weight: bold; /* Make the text bold */
+    color: #0073e6; /* Choose a color for the text */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition effect */
+}
+
+.profile-link:hover {
+    color: #005bb5; /* Change color on hover */
+    transform: translateX(5px); /* Slightly move the text to the right on hover */
+}
+
+.profile-link:focus {
+    outline: none; /* Remove the default focus outline */
+    border-bottom: 2px solid #0073e6; /* Add an underline effect when focused */
+}
+
+    .author-data {
+        display: flex;
+        text-align: center;
+        
+        justify-content: space-between;
+    }
+    .author-info {
+    margin-bottom: 15px; 
+        background-color: #f9f9f9;
+      
+        align-items: flex-start;
+
+        padding: 10px
+ 
+}
+
+.profile-skills {
+    margin-top: 0px;
+    font-size: 0.8rem;
+    color: #333;
+    font-style: italic;
+}
+
+.author-display-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.author-description {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: #555;
+}
+ 
+
+
+
+
+.item-author {
+    padding: 10px;
+
+    margin-top: 20px;
+    background-color: white;
+      
+    
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 5px;
+
+}
+
+/* Author Profile Section */
+.author-profile {
+ float:right;
+}
+
+.author-link img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30%;
+}
+
+.author-display-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+        justify-self: center;
+}
+
+/* Social Media Links with Text */
+.author-contact-links { 
+    display: inline-flex;
+    align-self: center;
+}
+
+/* Social Media Links with Text */
+.author-contact-links a {
+    padding: 0 5px;
+}
+
+
+.social-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;  /* Default text color */
+}
+
+/* SVG icon styling */
+.social-link svg {
+    width: 20px; /* Adjust icon size */
+    height: 20px;
+    fill: #fff;  /* Default SVG color (white) */
+}
+
+/* Individual social link icon colors */
+.social-facebook svg path {
+    fill: #3b5998;  /* Facebook color */
+}
+
+.social-twitter svg path {
+    fill: #1da1f2;  /* Twitter color */
+}
+
+.social-instagram svg path {
+    fill: #e4405f;  /* Instagram color */
+}
+
+.social-linkedin svg path {
+    fill: #0077b5;  /* LinkedIn color */
+}
+ 
+.author-itemdata {
+    display: flex;
+    justify-content: space-between;
+}
+ 
+.author-price {
+    font-size: 16px;
+    font-weight: bold;
+}

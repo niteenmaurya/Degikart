@@ -1,0 +1,110 @@
+
+.sales-bar {
+    align-items: center;
+    display: flex;
+    gap: 15px;
+}
+ 
+.sales-bar p {
+    font-size: 14px;  
+    
+}
+
+.sales-bar strong {
+    font-size: 14px; 
+}
+ 
+.sales-bar svg {
+    width: 14px; 
+    height: 14px;
+}
+ 
+.average-rating .star {
+    font-size: 18px;
+}
+
+.star.filled {
+    color: #FFD700; /* Yellow for filled stars */
+}
+
+.star.empty {
+    color: #e0e0e0; /* Light gray for empty stars */
+}
+
+.rating-text, .rated-count{
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.star.half {
+    color: #FFD700; /* Half yellow star */
+    background: linear-gradient(to right, #FFD700 50%, #e0e0e0 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.updated-label {
+    color: #6c757d;
+    font-weight: bold;
+    font-size: 14px;
+}
+ 
+
+
+
+#item-rate {
+    display: flex;
+    justify-content: space-between; /* Horizontally center the content */
+    align-items: center; /* Vertically align the items in the middle */
+    gap: 30px; /* Add a gap between left and right items */
+    width: 100%; /* Ensure the container takes the full width */
+}
+
+
+
+
+
+.left-item-rate {
+    display: flex;
+    gap: 20px; /* This adds space between the elements */
+    flex-wrap: wrap; /* Optional: This allows the items to wrap on smaller screens */
+}
+
+/* Optional: You can also control the alignment and spacing if needed */
+.left-item-rate strong {
+    margin: 0; /* Ensure there's no default margin on the strong tags */
+}
+
+
+
+.header-favorites {
+    position: relative;
+    display: inline-block;
+}
+
+.favorite-header-link {
+    text-decoration: none;
+}
+
+.favorite-header-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.heart-icon {
+    font-size: 20px;
+    cursor: pointer; 
+   
+}
+ 
+.favorite-btn {
+    font-size: 14px;
+    border: none; 
+    background: none;
+}
+
+
+
